@@ -1,0 +1,7 @@
+{
+  "name": "Lionfish Patrol",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
