@@ -5,6 +5,9 @@ import { MenuController,Platform, ModalController } from '@ionic/angular';
 import { UtilService } from '../services/util.service';
 import { ApiService } from '../api.service';
 
+import { TranslateService } from '@ngx-translate/core'; 
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -15,7 +18,8 @@ import { ApiService } from '../api.service';
 export class LoginPage {
   errors: any;
   loginForm: FormGroup;
-
+  language: string = this.translateService.currentLang;
+  
   validation_messages = {
     'email': [
       { type: 'required', message: 'Email is required.' },
@@ -33,8 +37,10 @@ export class LoginPage {
 	public api: ApiService,
 	private platform: Platform,
 	private modalController: ModalController,
-	public util: UtilService
+	public util: UtilService,
+	private translateService: TranslateService
   ) {
+     //this.language = this.translateService.currentLang;
     this.loginForm = new FormGroup({
       'email': new FormControl('test@test.com', Validators.compose([
         Validators.required,
@@ -56,6 +62,11 @@ export class LoginPage {
   ionViewDidLeave(): void {
     this.menu.enable(true);
   }
+  
+  languageChange(): void {
+	this.translateService.setDefaultLang(this.language);
+    this.translateService.use(this.language); 
+  }  
   
   doLogin(): void {
     console.log('do Log In');
