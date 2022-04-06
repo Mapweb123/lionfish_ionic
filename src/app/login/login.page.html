@@ -6,8 +6,9 @@
     <ion-title>{{ 'Log In' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content class="login-content">
+<ion-content class="login-content main_content_div" style="background-image: url(assets/imgs/PhoneScreen1.jpg);">
+  <div>
+  <div class="cover bg_image_extend" style="background-image: url(assets/imgs/big_logo1.png);"></div><br/><br/>
   <!--<h2 class="auth-title">
     Welcome!
     <br/>
@@ -20,6 +21,7 @@
           <ion-select-option value='en'>English</ion-select-option>
         </ion-select>
       </ion-item> <!-- add this block (end) -->
+  <br/><br/>    
   <form [formGroup]="loginForm" (ngSubmit)="doLogin()">
     <ion-list class="inputs-list" lines="full">
       <ion-item class="input-item">
@@ -60,11 +62,12 @@
     </ion-row>
   </form>
 
-  <div class="social-auth-options">
-    <p class="options-divider">{{ 'Or' | translate }}</p>
+  <!--<div class="social-auth-options">-->
+    <!--<p class="options-divider">{{ 'Or' | translate }}</p>
     <ion-button class="social-auth-btn facebook-auth-btn" expand="block" color="facebook" (click)="doFacebookLogin()">{{ 'Log In with Facebook' | translate }}</ion-button>
     <ion-button class="social-auth-btn google-auth-btn" expand="block" color="google" (click)="doGoogleLogin()">{{ 'Log In with Google' | translate }}</ion-button>
-    <ion-button class="social-auth-btn twitter-auth-btn" expand="block" color="twitter" (click)="doTwitterLogin()">{{ 'Log In with Twitter' | translate }}</ion-button>
+    <ion-button class="social-auth-btn twitter-auth-btn" expand="block" color="twitter" (click)="doTwitterLogin()">{{ 'Log In with Twitter' | translate }}</ion-button>-->
     <!--<ion-button class="social-auth-btn apple-auth-btn" expand="block" color="dark" (click)="doAppleLogin()">Log In with Apple</ion-button>-->
-  </div>
+  <!--</div>-->
+</div>  
 </ion-content>
