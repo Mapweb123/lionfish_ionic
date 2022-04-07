@@ -6,68 +6,126 @@
     <ion-title>{{ 'Log In' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content class="login-content main_content_div" style="background-image: url(assets/imgs/PhoneScreen1.jpg);">
+<ion-content
+  class="login-content main_content_div"
+  style="background-image: url(assets/imgs/PhoneScreen1.jpg)"
+>
   <div>
-  <div class="cover bg_image_extend" style="background-image: url(assets/imgs/big_logo1.png);"></div><br/><br/>
-  <!--<h2 class="auth-title">
+    <div
+      class="cover bg_image_extend"
+      style="background-image: url(assets/imgs/big_logo1.png)"
+    ></div>
+    <br /><br />
+    <!--<h2 class="auth-title">
     Welcome!
     <br/>
     Discover the new Ionic 6
   </h2>-->
-  <ion-item> <!-- add this block -->
-        <ion-label>{{ 'Language' | translate }}</ion-label>
-        <ion-select [(ngModel)]='language' (ionChange)='languageChange()' [placeholder]='"languageChangePlaceholder" | translate'>
-          <ion-select-option value='es'>Spanish</ion-select-option>
-          <ion-select-option value='en'>English</ion-select-option>
-        </ion-select>
-      </ion-item> <!-- add this block (end) -->
-  <br/><br/>    
-  <form [formGroup]="loginForm" (ngSubmit)="doLogin()">
-    <ion-list class="inputs-list" lines="full">
-      <ion-item class="input-item">
-        <ion-input type="email" [placeholder]='"Email" | translate' formControlName="email" clearInput autocapitalize="off" inputmode="email"></ion-input>
-      </ion-item>
-      <div class="error-container">
-        <ng-container *ngFor="let validation of validation_messages.email">
-          <div class="error-message" *ngIf="loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">
-            <ion-icon name="information-circle-outline"></ion-icon>
-            <span>{{ validation.message }}</span>
-          </div>
-        </ng-container>
-      </div>
+    <ion-item>
+      <!-- add this block -->
+      <ion-label>{{ 'Language' | translate }}</ion-label>
+      <ion-select
+        [(ngModel)]="language"
+        (ionChange)="languageChange()"
+        [placeholder]='"languageChangePlaceholder" | translate'
+      >
+        <ion-select-option value="es">Spanish</ion-select-option>
+        <ion-select-option value="en">English</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <!-- add this block (end) -->
+    <br /><br />
+    <form [formGroup]="loginForm" (ngSubmit)="doLogin()">
+      <ion-list class="inputs-list" lines="full">
+        <ion-item class="input-item">
+          <ion-input
+            type="email"
+            [placeholder]='"Email" | translate'
+            formControlName="email"
+            clearInput
+            autocapitalize="off"
+            inputmode="email"
+          ></ion-input>
+        </ion-item>
+        <div class="error-container">
+          <ng-container *ngFor="let validation of validation_messages.email">
+            <div
+              class="error-message"
+              *ngIf="loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)"
+            >
+              <ion-icon name="information-circle-outline"></ion-icon>
+              <span>{{ validation.message }}</span>
+            </div>
+          </ng-container>
+        </div>
 
-      <ion-item class="input-item">
-        <app-show-hide-password>
-          <ion-input type="password" [placeholder]='"Password" | translate' formControlName="password"></ion-input>
-        </app-show-hide-password>
-      </ion-item>
-      <div class="error-container">
-        <ng-container *ngFor="let validation of validation_messages.password">
-          <div class="error-message" *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
-            <ion-icon name="information-circle-outline"></ion-icon>
-            <span>{{ validation.message }}</span>
-          </div>
-        </ng-container>
-      </div>
-    </ion-list>
+        <ion-item class="input-item">
+          <app-show-hide-password>
+            <ion-input
+              type="password"
+              [placeholder]='"Password" | translate'
+              formControlName="password"
+            ></ion-input>
+          </app-show-hide-password>
+        </ion-item>
+        <div class="error-container">
+          <ng-container *ngFor="let validation of validation_messages.password">
+            <div
+              class="error-message"
+              *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)"
+            >
+              <ion-icon name="information-circle-outline"></ion-icon>
+              <span>{{ validation.message }}</span>
+            </div>
+          </ng-container>
+        </div>
+      </ion-list>
 
-    <ion-button class="login-btn" type="submit" expand="block" [disabled]="!loginForm.valid">{{ 'Log In' | translate }}</ion-button>
-    <ion-row class="other-auth-options-row">
-      <ion-button class="forgot-btn" fill="clear" [routerLink]="['/auth/forgot-password']">
-        {{ 'Forgot Password' | translate }}?
-      </ion-button>
-      <ion-button class="signup-btn" fill="clear" [routerLink]="['/auth/signup']">
-        {{ 'Sign Up' | translate }}!
-      </ion-button>
-    </ion-row>
-  </form>
+      <ion-button
+        class="login-btn"
+        type="submit"
+        expand="block"
+        [disabled]="!loginForm.valid"
+        >{{ 'Log In' | translate }}</ion-button
+      >
+      <ion-row class="other-auth-options-row">
+        <ion-button
+          class="forgot-btn"
+          fill="clear"
+          [routerLink]="['/auth/forgot-password']"
+        >
+          {{ 'Forgot Password' | translate }}?
+        </ion-button>
+        <ion-button
+          class="signup-btn"
+          fill="clear"
+          [routerLink]="['/auth/signup']"
+        >
+          {{ 'Sign Up' | translate }}!
+        </ion-button>
+      </ion-row>
+    </form>
 
-  <!--<div class="social-auth-options">-->
+    <!--<div class="social-auth-options">-->
     <!--<p class="options-divider">{{ 'Or' | translate }}</p>
     <ion-button class="social-auth-btn facebook-auth-btn" expand="block" color="facebook" (click)="doFacebookLogin()">{{ 'Log In with Facebook' | translate }}</ion-button>
     <ion-button class="social-auth-btn google-auth-btn" expand="block" color="google" (click)="doGoogleLogin()">{{ 'Log In with Google' | translate }}</ion-button>
     <ion-button class="social-auth-btn twitter-auth-btn" expand="block" color="twitter" (click)="doTwitterLogin()">{{ 'Log In with Twitter' | translate }}</ion-button>-->
     <!--<ion-button class="social-auth-btn apple-auth-btn" expand="block" color="dark" (click)="doAppleLogin()">Log In with Apple</ion-button>-->
-  <!--</div>-->
-</div>  
+    <!--</div>-->
+
+    <br /><br /><br />
+    <ion-label
+      class="forgot whiteTextClass"
+      (click)="terms()"
+      style="width: 48%; display: inline-block"
+      >T &amp; C</ion-label
+    >
+    <ion-label
+      class="forgot whiteTextClass"
+      (click)="privacy()"
+      style="width: 48%; float: right"
+      >Privacy Policy</ion-label
+    >
+  </div>
 </ion-content>

@@ -5,6 +5,15 @@
   --page-background: var(--app-background-shade);
 }
 
+
+
+.forgot{
+  color: var(--ion-color-primary);
+  font-weight: 600;
+  display: block;
+  text-align: center;
+}
+
 // Note:  All the CSS variables defined below are overrides of Ionic elements CSS Custom Properties
 .login-content {
   --background: var(--page-background);
@@ -115,11 +124,16 @@
 	}
 	
 	.whiteTextClass{
-		background-color: #FFF;
-		height: 35px;
-    	padding: 9px;
-		border-radius: 5px;
-	}
+    background-color: grey;
+    height: 35px;
+    padding: 9px;
+    border-radius: 5px;
+    color: #FFF;
+  }
+
+  .whiteTextClass:hover {
+    background-color: #250202;
+  }
 
     .content_div{
         padding-left: 30px;

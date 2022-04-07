@@ -16,6 +16,7 @@
   .legal-title {
     color: var(--ion-color-secondary);
     margin: var(--page-margin) 0px calc(var(--page-margin) / 2);
+    font-size: 20px;
   }
 
   .legal-text {
@@ -24,5 +25,44 @@
     font-size: 14px;
     line-height: 20px;
     text-align: justify;
+  }
+}
+
+.main_content_div{
+  padding: 15px;
+color:gray;
+text-align: justify;
+.roundImg{
+  border-radius:50%;
+  text-align: center;
+  }
+  
+  ion-button{
+      text-transform: capitalize;
+  }
+
+
+  .flex_div{
+      display: flex;
+      margin-bottom: 10px;
+      align-items: flex-start;
+
+      .user_div{
+          height: 40px;
+          width: 40px;
+          border-radius: 50%;
+          min-width : 40px;
+      }
+      .comment{
+          padding-left: 20px;
+          width: 70%;
+
+          .lbl_div{
+              background: #E0E0E0;
+              width: fit-content;
+              padding: 5px;
+              border-radius: 10px;
+          }
+      }
   }
 }
