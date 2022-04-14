@@ -7,80 +7,1169 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="signup-content">
-  <h2 class="auth-title">
+<ion-content class="signup-content filters-content">
+  <ion-item-group class="filters-group">
+    <!-- <h2 class="auth-title">
     Hello World!
-  </h2>
-  <form [formGroup]="signupForm" (ngSubmit)="doSignup()">
-    <ion-list class="inputs-list" lines="full">
-      <ion-item class="input-item">
-        <ion-input type="email" placeholder="Email" formControlName="email" clearInput autocapitalize="off" inputmode="email"></ion-input>
-      </ion-item>
-      <div class="error-container">
-        <ng-container *ngFor="let validation of validation_messages.email">
-          <div class="error-message" *ngIf="signupForm.get('email').hasError(validation.type) && (signupForm.get('email').dirty || signupForm.get('email').touched)">
-            <ion-icon name="information-circle-outline"></ion-icon>
-            <span>{{ validation.message }}</span>
-          </div>
-        </ng-container>
-      </div>
-
-      <div formGroupName="matching_passwords">
+  </h2> -->
+    <div class="main_content_div">
+      <div
+        class="cover bg_image"
+        [style.backgroundImage]="'url(assets/imgs/register_cover.jpg)'"
+      ></div>
+      <form class="validations-form" [formGroup]="signupForm" (ngSubmit)="doSignup()">
+        <!-- <ion-list class="inputs-list" lines="full">
         <ion-item class="input-item">
-          <app-show-hide-password>
-            <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
-          </app-show-hide-password>
+          <ion-input
+            type="email"
+            placeholder="Email"
+            formControlName="email"
+            clearInput
+            autocapitalize="off"
+            inputmode="email"
+          ></ion-input>
         </ion-item>
         <div class="error-container">
-          <ng-container *ngFor="let validation of validation_messages.password">
-            <div class="error-message" *ngIf="signupForm.get('matching_passwords').get('password').hasError(validation.type) && (signupForm.get('matching_passwords').get('password').dirty || signupForm.get('matching_passwords').get('password').touched)">
+          <ng-container *ngFor="let validation of validation_messages.email">
+            <div
+              class="error-message"
+              *ngIf="signupForm.get('email').hasError(validation.type) && (signupForm.get('email').dirty || signupForm.get('email').touched)"
+            >
               <ion-icon name="information-circle-outline"></ion-icon>
               <span>{{ validation.message }}</span>
             </div>
           </ng-container>
         </div>
 
-        <ion-item class="input-item">
-          <app-show-hide-password>
-            <ion-input type="password" placeholder="Confirm Password" formControlName="confirm_password"></ion-input>
-          </app-show-hide-password>
-        </ion-item>
+        <div formGroupName="matching_passwords">
+          <ion-item class="input-item">
+            <app-show-hide-password>
+              <ion-input
+                type="password"
+                placeholder="Password"
+                formControlName="password"
+              ></ion-input>
+            </app-show-hide-password>
+          </ion-item>
+          <div class="error-container">
+            <ng-container
+              *ngFor="let validation of validation_messages.password"
+            >
+              <div
+                class="error-message"
+                *ngIf="signupForm.get('matching_passwords').get('password').hasError(validation.type) && (signupForm.get('matching_passwords').get('password').dirty || signupForm.get('matching_passwords').get('password').touched)"
+              >
+                <ion-icon name="information-circle-outline"></ion-icon>
+                <span>{{ validation.message }}</span>
+              </div>
+            </ng-container>
+          </div>
+
+          <ion-item class="input-item">
+            <app-show-hide-password>
+              <ion-input
+                type="password"
+                placeholder="Confirm Password"
+                formControlName="confirm_password"
+              ></ion-input>
+            </app-show-hide-password>
+          </ion-item>
+          <div class="error-container">
+            <ng-container
+              *ngFor="let validation of validation_messages.confirm_password"
+            >
+              <div
+                class="error-message"
+                *ngIf="signupForm.get('matching_passwords').get('confirm_password').hasError(validation.type) && (signupForm.get('matching_passwords').get('confirm_password').dirty || signupForm.get('matching_passwords').get('confirm_password').touched)"
+              >
+                <ion-icon name="information-circle-outline"></ion-icon>
+                <span>{{ validation.message }}</span>
+              </div>
+            </ng-container>
+          </div>
+        </div>
         <div class="error-container">
-          <ng-container *ngFor="let validation of validation_messages.confirm_password">
-            <div class="error-message" *ngIf="signupForm.get('matching_passwords').get('confirm_password').hasError(validation.type) && (signupForm.get('matching_passwords').get('confirm_password').dirty || signupForm.get('matching_passwords').get('confirm_password').touched)">
+          <ng-container
+            *ngFor="let validation of validation_messages.matching_passwords"
+          >
+            <div
+              class="error-message"
+              *ngIf="signupForm.get('matching_passwords').hasError(validation.type) && (signupForm.get('matching_passwords').get('confirm_password').dirty || signupForm.get('matching_passwords').get('confirm_password').touched)"
+            >
               <ion-icon name="information-circle-outline"></ion-icon>
               <span>{{ validation.message }}</span>
             </div>
           </ng-container>
         </div>
-      </div>
-      <div class="error-container">
-        <ng-container *ngFor="let validation of validation_messages.matching_passwords">
-          <div class="error-message" *ngIf="signupForm.get('matching_passwords').hasError(validation.type) && (signupForm.get('matching_passwords').get('confirm_password').dirty || signupForm.get('matching_passwords').get('confirm_password').touched)">
-            <ion-icon name="information-circle-outline"></ion-icon>
-            <span>{{ validation.message }}</span>
+      </ion-list> -->
+        <br />
+        <ion-list-header>
+        <ion-label class="header-title">Register as</ion-label>
+      </ion-list-header>
+        <ion-radio-group formControlName="opt_iam" (ionChange)="registerChange($event)">
+          <ion-row class="radio-tags">
+            <ion-item class="radio-tag" lines="none">
+              <ion-label class="tag-label">Diver</ion-label>
+              <ion-radio value="diver"></ion-radio>
+            </ion-item>
+            <ion-item class="radio-tag" lines="none">
+              <ion-label class="tag-label">
+                <span>Trapper</span>
+              </ion-label>
+              <ion-radio value="trapper"></ion-radio>
+            </ion-item>
+          </ion-row>
+          <ion-row class="radio-tags">
+            <ion-item class="radio-tag" lines="none">
+              <ion-label class="tag-label">
+                <span>Observer</span>
+              </ion-label>
+              <ion-radio value="Observer"></ion-radio>
+            </ion-item>
+            <ion-item class="radio-tag" lines="none">
+              <ion-label class="tag-label">
+                <span>Business</span>
+              </ion-label>
+              <ion-radio value="business"></ion-radio>
+            </ion-item>
+          </ion-row>
+          <ion-row class="radio-tags">
+            <ion-item class="radio-tag" lines="none">
+              <ion-label class="tag-label">
+                <span>Nonprofit/Organization</span>
+              </ion-label>
+              <ion-radio value="organization"></ion-radio>
+            </ion-item>
+          </ion-row>
+        </ion-radio-group>
+        <div id="frm_diver" *ngIf="showDiver">
+          <ion-list-header>
+            <ion-label class="header-title">Country*</ion-label>
+          </ion-list-header>
+          <!-- <ion-label>Country*</ion-label> -->
+          <ion-select
+            placeholder="Choose Country"
+            formControlName="div_sel_country"
+            cancelText="Cancel" okText="OK"
+            (ionChange)="fetchStates($event)"
+          >
+            <!-- <ng-container *ngFor="let item of countryArr"> -->
+              <ion-select-option *ngFor="let item of countryArr" [value]="item.shortname"
+                >{{item.name}}</ion-select-option
+              >
+            <!-- </ng-container> -->
+          </ion-select>
+          <!-- <br /> -->
+          <ion-list-header>
+            <ion-label class="header-title">Region*</ion-label>
+          </ion-list-header>
+          <!-- <ion-label>Region*</ion-label> -->
+          <ion-select
+            placeholder="Choose Region"
+            formControlName="div_sel_region"
+          >
+            <!-- <ion-select-option value=""
+              >Please Choose Your Region</ion-select-option
+            > -->
+            <ion-select-option value="Atlantic">Atlantic</ion-select-option>
+            <ion-select-option value="Gulf of Mexico"
+              >Gulf of Mexico</ion-select-option
+            >
+            <ion-select-option value="Carribean">Carribean</ion-select-option>
+            <ion-select-option value="Mediterranean Sea"
+              >Mediterranean Sea</ion-select-option
+            >
+          </ion-select>
+          <!-- <br /> -->
+          <ion-list-header>
+            <ion-label class="header-title">First Name*</ion-label>
+          </ion-list-header>
+          <!-- <ion-label>First Name*</ion-label> -->
+          <ion-input
+            type="text"
+            formControlName="div_txt_fname"
+            placeholder="Enter First Name"
+          ></ion-input>
+          <!-- <br />
+          <ion-label>Last Name*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Last Name*</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="div_txt_lname"
+            placeholder="Enter Last Name"
+          ></ion-input>
+          <!-- <br />
+          <ion-label>Nickname*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Nickname*</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="div_txt_nickname"
+            placeholder="Enter Nickname"
+          ></ion-input>
+          <!-- <br />
+          <ion-label>Gender*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Gender*</ion-label>
+          </ion-list-header>
+          <!-- <br /> -->
+          <ion-radio-group formControlName="div_opt_gender">
+            <ion-row class="radio-tags">
+              <ion-item class="radio-tag" lines="none">
+                <ion-label class="tag-label">Male</ion-label>
+                <ion-radio value="M"></ion-radio>
+              </ion-item>
+              <ion-item class="radio-tag" lines="none">
+                <ion-label class="tag-label">
+                  <span>Female</span>
+                </ion-label>
+                <ion-radio value="F"></ion-radio>
+              </ion-item>
+            </ion-row>
+          </ion-radio-group>
+          <!-- <div class="list_div">
+            <ion-radio-group formControlName="div_opt_gender">
+              <ion-row>
+                <ion-col size="6">
+                  <ion-item>
+                    <ion-label>Male</ion-label>
+                    <ion-radio value="M"></ion-radio>
+                  </ion-item>
+                </ion-col>
+                <ion-col size="6">
+                  <ion-item>
+                    <ion-label>Female</ion-label>
+                    <ion-radio value="F"></ion-radio>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-radio-group>
+          </div> -->
+          <!-- <br />
+          <ion-label>Date of Birth*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Date of Birth*</ion-label>
+          </ion-list-header>
+          <ion-item class="input-item birthdate-item" [button]="true" id="open-datetime">
+            <!-- <ion-label color="secondary" position="stacked">Date of Birth*</ion-label> -->
+            <ion-text style="opacity: .5;" class="placeholder" *ngIf="!formattedDate">Select a date</ion-text>
+            <ion-text *ngIf="formattedDate">{{ formattedDate }}</ion-text>
+            <ion-modal trigger="open-datetime" class="datetime-modal">
+              <ng-template> 
+                <ion-content>
+                  <ion-datetime
+                  formControlName="div_birthDate"
+                  presentation="date"
+                  (ionChange)="formatDate()"
+                  [showDefaultButtons]="true">
+                </ion-datetime>
+                </ion-content>
+              </ng-template>
+            </ion-modal>
+          </ion-item>
+          <!-- <dp-date-picker
+          type="text"
+          formControlName="div_birthDate"
+        ></dp-date-picker> -->
+          <!-- <br />
+          <ion-label>Dive City (Dive Location)*</ion-label> -->
+          <!-- <ion-list-header>
+            <ion-label class="header-title">Dive City (Dive Location)*</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="div_txt_city"
+            placeholder="Enter Dive City"
+          ></ion-input> -->
+          <!--<ion-label>County*</ion-label>
+            <ion-input type="text" formControlName="div_txt_county" placeholder="Enter County"></ion-input>-->
+          <!-- <ion-label>State or Province*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">State or Province*</ion-label>
+          </ion-list-header>
+          <!-- <ion-input
+            type="text"
+            formControlName="div_txt_state"
+            placeholder="Enter State or Province"
+          ></ion-input> -->
+          <ion-select
+            placeholder="Choose State or Province"
+            formControlName="div_txt_state"
+            cancelText="Cancel" okText="OK"
+            (ionChange)="fetchCities($event)"
+          >
+              <ion-select-option *ngFor="let item of statesArr" [value]="item.id"
+                >{{item.name}}</ion-select-option
+              >
+          </ion-select>
+          <ion-list-header>
+            <ion-label class="header-title">Dive City (Dive Location)*</ion-label>
+          </ion-list-header>
+          <!-- <ion-input
+            type="text"
+            formControlName="div_txt_city"
+            placeholder="Enter Dive City"
+          ></ion-input> -->
+          <ion-select
+            placeholder="Choose Dive City"
+            formControlName="div_txt_city"
+            cancelText="Cancel" okText="OK"
+          >
+              <ion-select-option *ngFor="let item of citiesArr" [value]="item.id"
+                >{{item.name}}</ion-select-option
+              >
+          </ion-select>
+          <!-- <br />
+          <ion-label>Habitat Type*</ion-label>
+          <br /> -->
+          <ion-list-header>
+            <ion-label class="header-title">Habitat Type*</ion-label>
+          </ion-list-header>
+          <ion-radio-group formControlName="div_opt_bottom_type">
+            <ion-row class="radio-tags">
+              <ion-item class="radio-tag" lines="none">
+                <ion-label class="tag-label">Natural</ion-label>
+                <ion-radio value="natural"></ion-radio>
+              </ion-item>
+              <ion-item class="radio-tag" lines="none">
+                <ion-label class="tag-label">
+                  <span>Artificial</span>
+                </ion-label>
+                <ion-radio value="artificial"></ion-radio>
+              </ion-item>
+            </ion-row>
+          </ion-radio-group>
+          <!-- <br />
+          <ion-label>Dive Day Time*</ion-label>
+          <br /> -->
+          <ion-list-header>
+            <ion-label class="header-title">Dive Day Time*</ion-label>
+          </ion-list-header>
+          <ion-radio-group formControlName="div_opt_dive_day_time">
+            <ion-row class="radio-tags">
+              <ion-item class="radio-tag" lines="none">
+                <ion-label class="tag-label">Morning</ion-label>
+                <ion-radio value="morning"></ion-radio>
+              </ion-item>
+              <ion-item class="radio-tag" lines="none">
+                <ion-label class="tag-label">
+                  <span>Afternoon</span>
+                </ion-label>
+                <ion-radio value="afternoon"></ion-radio>
+              </ion-item>
+            </ion-row>
+            <ion-row class="radio-tags">
+              <ion-item class="radio-tag" lines="none">
+                <ion-label class="tag-label">Evening</ion-label>
+                <ion-radio value="evening"></ion-radio>
+              </ion-item>
+              <ion-item class="radio-tag" lines="none">
+                <ion-label class="tag-label">
+                  <span>Night</span>
+                </ion-label>
+                <ion-radio value="night"></ion-radio>
+              </ion-item>
+            </ion-row>
+          </ion-radio-group>
+          <!-- <br />
+          <ion-label>Reason for Catch*</ion-label>
+          <br /> -->
+          <ion-list-header>
+            <ion-label class="header-title">Reason for Catch*</ion-label>
+          </ion-list-header>
+          <ion-radio-group formControlName="div_opt_reason">
+            <ion-row class="radio-tags">
+              <ion-item class="radio-tag" lines="none">
+                <ion-label class="tag-label">Personal</ion-label>
+                <ion-radio value="personal"></ion-radio>
+              </ion-item>
+              <ion-item class="radio-tag" lines="none">
+                <ion-label class="tag-label">
+                  <span>Wholesale</span>
+                </ion-label>
+                <ion-radio value="wholesale"></ion-radio>
+              </ion-item>
+            </ion-row>
+          </ion-radio-group>
+          <!-- <br />
+          <ion-label>Email*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Email*</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="div_txt_email"
+            placeholder="Enter Email Address"
+          ></ion-input>
+          <!-- <br />
+          <ion-label>Password*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Password*</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="div_txt_password"
+            placeholder="Password"
+          ></ion-input>
+          <!-- <br />
+          <ion-label>Repeat Password*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Repeat Password*</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="div_txt_repeat_password"
+            placeholder="Repeat Password"
+          ></ion-input>
+          <!-- <br />
+          <ion-label>Phone Number*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Phone Number*</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="div_txt_phone_number"
+            placeholder="Enter Phone Number"
+          ></ion-input>
+          <!-- <br />
+          <ion-label>Profile Picture*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Profile Picture*</ion-label>
+          </ion-list-header>
+          <!--<ion-input formControlName="div_file_profile_pic" type="file" accept="image/*" (change)="changeListener($event)"></ion-input>-->
+          &nbsp;&nbsp;<ion-icon
+            style="width: 30px; height: 30px"
+            name="camera"
+            (click)="updateRegisterPic()"
+          ></ion-icon
+          >&nbsp;&nbsp;<ion-label (click)="updateRegisterPic()"
+          style="opacity: .5;" >Click on the Camera icon to browse images</ion-label
+          >&nbsp;&nbsp;<img
+            style="display: none"
+            [src]="clickedImage"
+          />
+          <!-- <br /><br />
+          <ion-label>About Information</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">About Information</ion-label>
+          </ion-list-header>
+          <ion-textarea
+            formControlName="org_about_information"
+            placeholder="Enter About Information here..."
+          ></ion-textarea>
+        </div>
+
+        <div id="frm_diver" *ngIf="showTrapper">
+          <!-- <br />
+          <ion-label>Country*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Country*</ion-label>
+          </ion-list-header>
+          <ion-select
+            placeholder="Choose Country"
+            formControlName="div_sel_country"
+            cancelText="Cancel" okText="OK"
+            (ionChange)="fetchStates($event)"
+          >
+            <!-- <ng-container *ngFor="let item of this.countryArr"> -->
+              <ion-select-option *ngFor="let item of this.countryArr" [value]="item.shortname"
+                >{{item.name}}</ion-select-option
+              >
+            <!-- </ng-container> -->
+          </ion-select>
+          <!-- <br />
+          <ion-label>Region*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Region*</ion-label>
+          </ion-list-header>
+          <ion-select
+            placeholder="Choose Region"
+            formControlName="div_sel_region"
+          >
+            <!-- <ion-select-option value=""
+              >Please Choose Your Region</ion-select-option
+            > -->
+            <ion-select-option value="Atlantic">Atlantic</ion-select-option>
+            <ion-select-option value="Gulf of Mexico"
+              >Gulf of Mexico</ion-select-option
+            >
+            <ion-select-option value="Carribean">Carribean</ion-select-option>
+            <!--<ion-select-option value="Indian Ocean" >Indian Ocean</ion-select-option>-->
+            <ion-select-option value="Mediterranean Sea"
+              >Mediterranean Sea</ion-select-option
+            >
+            <!--<ion-select-option value="Pacific" >Pacific</ion-select-option>-->
+          </ion-select>
+          <!-- <br />
+          <ion-label>First Name*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">First Name*</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="div_txt_fname"
+            placeholder="Enter First Name"
+          ></ion-input>
+          <!-- <br />
+          <ion-label>Last Name*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Last Name*</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="div_txt_lname"
+            placeholder="Enter Last Name"
+          ></ion-input>
+          <!-- <br />
+          <ion-label>Nickname*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Nickname*</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="div_txt_nickname"
+            placeholder="Enter Nickname"
+          ></ion-input>
+          <!-- <br />
+          <ion-label>Business Name</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Business Name</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="div_txt_business_name"
+            placeholder="Enter Business Name"
+          ></ion-input>
+          <!-- <br />
+          <ion-label>Gender*</ion-label>
+          <br /> -->
+          <ion-list-header>
+            <ion-label class="header-title">Gender*</ion-label>
+          </ion-list-header>
+          <ion-radio-group formControlName="div_opt_gender">
+            <ion-row class="list_div radio-tags">
+              <ion-item class="radio-tag" lines="none">
+                <ion-label class="tag-label">Male</ion-label>
+                <ion-radio value="M"></ion-radio>
+              </ion-item>
+              <ion-item class="radio-tag" lines="none">
+                <ion-label class="tag-label">
+                  <span>Female</span>
+                </ion-label>
+                <ion-radio value="F"></ion-radio>
+              </ion-item>
+            </ion-row>
+          </ion-radio-group>
+          <!-- <br />
+          <ion-label>Gender*</ion-label>
+          <div class="list_div">
+            <ion-radio-group formControlName="div_opt_gender">
+              <ion-item>
+                <ion-label>Male</ion-label>
+                <ion-radio value="M"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Female</ion-label>
+                <ion-radio value="F"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </div> -->
+          <!-- <br />
+          <ion-label>Date of Birth*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Date of Birth*</ion-label>
+          </ion-list-header>
+          <ion-item class="input-item birthdate-item" [button]="true" id="open-datetime">
+            <ion-text style="opacity: .5;" class="placeholder" *ngIf="!formattedDate">Select a date</ion-text>
+            <ion-text *ngIf="formattedDate">{{ formattedDate }}</ion-text>
+            <ion-modal trigger="open-datetime" class="datetime-modal">
+              <ng-template>
+                <ion-content>
+                  <ion-datetime
+                  formControlName="div_birthDate"
+                  presentation="date"
+                  (ionChange)="formatDate()"
+                  [showDefaultButtons]="true">
+                </ion-datetime>
+                </ion-content>
+              </ng-template>
+            </ion-modal>
+          </ion-item>
+          <!-- <dp-date-picker
+          type="text"
+          formControlName="div_birthDate"
+        ></dp-date-picker> -->
+          <!-- <br />
+          <ion-label>Trap City *</ion-label> -->
+          <!-- <ion-list-header>
+            <ion-label class="header-title">Trap City *</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="div_txt_city"
+            placeholder="Enter Trap City"
+          ></ion-input> -->
+          <!-- <br />
+          <ion-label>State or Province*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">State or Province*</ion-label>
+          </ion-list-header>
+          <!-- <ion-input
+            type="text"
+            formControlName="div_txt_state"
+            placeholder="Enter State or Province"
+          ></ion-input> -->
+          <ion-select
+          placeholder="Choose State or Province"
+          formControlName="div_txt_state"
+          cancelText="Cancel" okText="OK"
+          (ionChange)="fetchCities($event)"
+          >
+          <ion-select-option *ngFor="let item of statesArr" [value]="item.id"
+          >{{item.name}}</ion-select-option
+          >
+          </ion-select>
+          <ion-list-header>
+            <ion-label class="header-title">Trap City *</ion-label>
+          </ion-list-header>
+          <ion-select
+          placeholder="Choose Dive City"
+          formControlName="div_txt_city"
+          cancelText="Cancel" okText="OK"
+          >
+          <ion-select-option *ngFor="let item of citiesArr" [value]="item.id"
+          >{{item.name}}</ion-select-option
+          >
+          </ion-select>
+          <!-- <br />
+          <ion-label>Bottom Type*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Bottom Type*</ion-label>
+          </ion-list-header>
+          <ion-select
+            placeholder="Choose Region"
+            formControlName="div_bottom_type"
+          >
+            <!-- <ion-select-option value=""
+              >Please Choose Bottom Type</ion-select-option
+            > -->
+            <ion-select-option value="Sand">Sand</ion-select-option>
+            <ion-select-option value="Seagrass">Seagrass</ion-select-option>
+            <ion-select-option value="Hardbottom">Hardbottom</ion-select-option>
+            <ion-select-option value="Reef">Reef</ion-select-option>
+          </ion-select>
+          <!-- <br />
+          <ion-label>Removal Time*</ion-label><br /> -->
+          <ion-list-header>
+            <ion-label class="header-title">Removal Time*</ion-label>
+          </ion-list-header>
+          <div class="list_div">
+            <ion-radio-group formControlName="div_opt_dive_day_time">
+              <ion-row class="radio-tags">
+                <ion-item class="radio-tag" lines="none">
+                  <ion-label class="tag-label">Morning</ion-label>
+                  <ion-radio value="morning"></ion-radio>
+                </ion-item>
+                <ion-item class="radio-tag" lines="none">
+                  <ion-label class="tag-label">
+                    <span>Afternoon</span>
+                  </ion-label>
+                  <ion-radio value="afternoon"></ion-radio>
+                </ion-item>
+              </ion-row>
+              <ion-row class="radio-tags">
+                <ion-item class="radio-tag" lines="none">
+                  <ion-label class="tag-label">Evening</ion-label>
+                  <ion-radio value="evening"></ion-radio>
+                </ion-item>
+                <ion-item class="radio-tag" lines="none">
+                  <ion-label class="tag-label">
+                    <span>Night</span>
+                  </ion-label>
+                  <ion-radio value="night"></ion-radio>
+                </ion-item>
+              </ion-row>
+            </ion-radio-group>
+            <!-- <ion-radio-group formControlName="div_opt_dive_day_time">
+              <ion-item>
+                <ion-label>Morning</ion-label>
+                <ion-radio value="morning"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Afternoon</ion-label>
+                <ion-radio value="afternoon"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Evening</ion-label>
+                <ion-radio value="evening"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Night</ion-label>
+                <ion-radio value="night"></ion-radio>
+              </ion-item>
+            </ion-radio-group> -->
           </div>
-        </ng-container>
-      </div>
-    </ion-list>
+          <!-- <br />
+          <ion-label>Reason for Catch*</ion-label><br /> -->
+          <ion-list-header>
+            <ion-label class="header-title">Reason for Catch*</ion-label>
+          </ion-list-header>
+          <div class="list_div">
+            <ion-radio-group formControlName="div_opt_reason">
+              <ion-row class="list_div radio-tags">
+                <ion-item class="radio-tag" lines="none">
+                  <ion-label class="tag-label">Personal</ion-label>
+                  <ion-radio value="personal"></ion-radio>
+                </ion-item>
+                <ion-item class="radio-tag" lines="none">
+                  <ion-label class="tag-label">
+                    <span>Wholesale</span>
+                  </ion-label>
+                  <ion-radio value="wholesale"></ion-radio>
+                </ion-item>
+              </ion-row>
+            </ion-radio-group>
 
-    <ion-button class="signup-btn" type="submit" expand="block" [disabled]="!signupForm.valid">Sign Up</ion-button>
-    <ion-row class="other-auth-options-row">
-      <ion-button class="login-btn" fill="clear" [routerLink]="['/auth/login']">
-        Already have an account?
-      </ion-button>
-    </ion-row>
-  </form>
+            <!-- <ion-radio-group formControlName="div_opt_reason">
+              <ion-item>
+                <ion-label>Personal</ion-label>
+                <ion-radio value="personal"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Wholesale</ion-label>
+                <ion-radio value="wholesale"></ion-radio>
+              </ion-item>
+            </ion-radio-group> -->
+          </div>
+          <!-- <br />
+          <ion-label>Email*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Email*</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="div_txt_email"
+            placeholder="Enter Email Address"
+          ></ion-input>
+          <!-- <br />
+          <ion-label>Password*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Password*</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="div_txt_password"
+            placeholder="Password"
+          ></ion-input>
+          <!-- <br />
+          <ion-label>Repeat Password*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Repeat Password*</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="div_txt_repeat_password"
+            placeholder="Repeat Password"
+          ></ion-input>
+          <!-- <br />
+          <ion-label>Phone Number*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Phone Number*</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="div_txt_phone_number"
+            placeholder="Enter Phone Number"
+          ></ion-input>
+          <!-- <br />
+          <ion-label>Profile Picture</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Profile Picture</ion-label>
+          </ion-list-header>
+          &nbsp;&nbsp;<ion-icon
+            style="width: 30px; height: 30px"
+            name="camera"
+            (click)="updateRegisterPic()"
+          ></ion-icon
+          >&nbsp;&nbsp;<ion-label (click)="updateRegisterPic()"
+          style="opacity: .5;" >Click on the Camera icon to browse images</ion-label
+          >&nbsp;&nbsp;<img
+            style="display: none"
+            [src]="clickedImage"
+          />
+          <!-- <br /><br />
+          <ion-label>Profile Background</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Profile Background</ion-label>
+          </ion-list-header>
+          &nbsp;&nbsp;<ion-icon
+            style="width: 30px; height: 30px"
+            name="camera"
+            (click)="updateRegisterPic_background()"
+          ></ion-icon
+          >&nbsp;&nbsp;<ion-label (click)="updateRegisterPic_background()"
+          style="opacity: .5;" >Click on the Camera icon to browse images</ion-label
+          >&nbsp;&nbsp;<img
+            style="display: none"
+            [src]="clickedImageBack"
+          />
+          <!-- <br /><br />
+          <ion-label>About Information</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">About Information</ion-label>
+          </ion-list-header>
+          <ion-textarea
+            formControlName="org_about_information"
+            placeholder="Enter About Information here..."
+          ></ion-textarea>
 
-  <div class="social-auth-options">
+          <!-- <ion-label>Website</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Website</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="org_txt_website"
+            placeholder="Enter Website"
+          ></ion-input>
+          <!-- <br />
+          <ion-label>Facebook</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Facebook</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="org_txt_facebook"
+            placeholder="Enter Facebook"
+          ></ion-input>
+          <!-- <br />
+          <ion-label>Instagram</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Instagram</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="org_txt_instagram"
+            placeholder="Enter Instagram"
+          ></ion-input>
+          <!-- <br />
+          <ion-label>LinkedIn</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">LinkedIn</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="org_txt_linkedin"
+            placeholder="Enter LinkedIn"
+          ></ion-input><br />
+        </div>
+
+        <div id="frm_organization" *ngIf="showOrg">
+          <!-- <br />
+          <ion-label>Country*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Country*</ion-label>
+          </ion-list-header>
+          <ion-select
+            placeholder="Choose Country"
+            formControlName="org_sel_country"
+            cancelText="Cancel" okText="OK"
+            (ionChange)="fetchStates($event)"
+          >
+            <ng-container *ngFor="let item of this.countryArr">
+              <ion-select-option [value]="item.shortname"
+                >{{item.name}}</ion-select-option
+              >
+            </ng-container>
+          </ion-select>
+          <!-- <br />
+          <ion-label>Region*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Region*</ion-label>
+          </ion-list-header>
+          <ion-select
+            placeholder="Choose Region"
+            formControlName="org_sel_region"
+          >
+            <!-- <ion-select-option value=""
+              >Please Choose Your Region</ion-select-option
+            > -->
+            <ion-select-option value="Atlantic">Atlantic</ion-select-option>
+            <ion-select-option value="Gulf of Mexico"
+              >Gulf of Mexico</ion-select-option
+            >
+            <ion-select-option value="Carribean">Carribean</ion-select-option>
+            <ion-select-option value="Mediterranean Sea"
+              >Mediterranean Sea</ion-select-option
+            >
+          </ion-select>
+          <!-- <br />
+          <ion-label>First Name*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">First Name*</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="org_txt_fname"
+            placeholder="Enter First Name"
+          ></ion-input>
+          <!-- <ion-label>Last Name*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Last Name*</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="org_txt_lname"
+            placeholder="Enter Last Name"
+          ></ion-input>
+          <ion-list-header *ngIf="showObserverFields">
+            <ion-label class="header-title">Business Name*</ion-label>
+          </ion-list-header>
+          <!-- <ion-label *ngIf="showObserverFields">Business Name*</ion-label> -->
+          <ion-input
+            *ngIf="showObserverFields"
+            type="text"
+            formControlName="org_txt_businessname"
+            placeholder="Enter Business Name"
+          ></ion-input>
+          <div *ngIf="showBussCat">
+            <!-- <ion-label>Business Category</ion-label> -->
+            <ion-list-header>
+              <ion-label class="header-title">Business Category</ion-label>
+            </ion-list-header>
+            <ion-input
+              type="hidden"
+              formControlName="org_buss_cate_string"
+              class="hideBorder"
+            ></ion-input>
+            <ion-select
+              placeholder="Choose Business Category"
+              formControlName="org_buss_cate"
+              multiple="true"
+              (ionChange)="onCategoryChange()"
+            >
+              <ng-container *ngFor="let item of this.bussCate">
+                <ion-select-option [value]="item.values"
+                  >{{item.name}}</ion-select-option
+                >
+              </ng-container>
+            </ion-select>
+            <!-- <br /> -->
+          </div>
+          <!-- <ion-label>City*</ion-label> -->
+          <!-- <ion-list-header>
+            <ion-label class="header-title">City*</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="org_txt_city"
+            placeholder="Enter City"
+          ></ion-input> -->
+          <!-- <ion-label>State or Province*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">State or Province*</ion-label>
+          </ion-list-header>
+          <!-- <ion-input
+            type="text"
+            formControlName="org_txt_state"
+            placeholder="Enter State or Province"
+          ></ion-input> -->
+          <ion-select
+          placeholder="Choose State or Province"
+          formControlName="org_txt_state"
+          cancelText="Cancel" okText="OK"
+          (ionChange)="fetchCities($event)"
+          >
+          <ion-select-option *ngFor="let item of statesArr" [value]="item.id"
+          >{{item.name}}</ion-select-option
+          >
+          </ion-select>
+          <ion-list-header>
+            <ion-label class="header-title">City*</ion-label>
+          </ion-list-header>
+          <!-- <ion-input
+            type="text"
+            formControlName="org_txt_city"
+            placeholder="Enter City"
+          ></ion-input> -->
+          <ion-select
+          placeholder="Choose City"
+          formControlName="org_txt_city"
+          cancelText="Cancel" okText="OK"
+          >
+          <ion-select-option *ngFor="let item of citiesArr" [value]="item.id"
+          >{{item.name}}</ion-select-option
+          >
+          </ion-select>
+          <!-- <ion-label>Postal Code*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Postal Code*</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="org_txt_postal_code"
+            placeholder="Enter Postal Code"
+          ></ion-input>
+          <!-- <ion-label>Email*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Email*</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="org_txt_email"
+            placeholder="Enter Email Address"
+          ></ion-input>
+          <!-- <ion-label>Password*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Password*</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="org_txt_password"
+            placeholder="Password"
+          ></ion-input>
+          <!-- <ion-label>Repeat Password*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Repeat Password*</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="org_txt_repeat_password"
+            placeholder="Repeat Password"
+          ></ion-input>
+          <!-- <ion-label>Phone Number*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Phone Number*</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="org_txt_phone_number"
+            placeholder="Enter Phone Number"
+          ></ion-input>
+          <!-- <ion-label>Profile Picture*</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Profile Picture*</ion-label>
+          </ion-list-header>
+          &nbsp;&nbsp;<ion-icon
+            style="width: 30px; height: 30px"
+            name="camera"
+            (click)="updateRegisterPic()"
+          ></ion-icon
+          >&nbsp;&nbsp;<ion-label (click)="updateRegisterPic()"
+          style="opacity: .5;">Click on the Camera icon to browse images</ion-label
+          >&nbsp;&nbsp;<img
+            style="display: none"
+            [src]="clickedImage"
+          />
+          <!-- <br /><br />
+          <ion-label>About Information</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">About Information</ion-label>
+          </ion-list-header>
+          <ion-textarea
+            formControlName="org_about_information"
+            placeholder="Enter About Information here..."
+          ></ion-textarea>
+          <!-- <ion-label *ngIf="showObserverFields">Website</ion-label> -->
+          <ion-list-header *ngIf="showObserverFields">
+            <ion-label class="header-title">Website</ion-label>
+          </ion-list-header>
+          <ion-input
+            *ngIf="showObserverFields"
+            type="text"
+            formControlName="org_txt_website"
+            placeholder="Enter Website"
+          ></ion-input>
+          <!-- <ion-label>Facebook</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Facebook</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="org_txt_facebook"
+            placeholder="Enter Facebook"
+          ></ion-input>
+          <!-- <ion-label>Instagram</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">Instagram</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="org_txt_instagram"
+            placeholder="Enter Instagram"
+          ></ion-input>
+          <!-- <ion-label>LinkedIn</ion-label> -->
+          <ion-list-header>
+            <ion-label class="header-title">LinkedIn</ion-label>
+          </ion-list-header>
+          <ion-input
+            type="text"
+            formControlName="org_txt_linkedin"
+            placeholder="Enter LinkedIn"
+          ></ion-input>
+        </div>
+
+        <!-- Checkbox Colors -->
+        <ion-list class="inputs-list" lines="full">
+          <ion-list-header>
+            <ion-label class="header-title">Terms and Conditions</ion-label>
+          </ion-list-header>
+    
+          <ion-item class="input-item terms-item">
+            <ion-label style="text-decoration: underline"><a class="legal-action" (click)="showTermsModal()">I Accept Terms and Conditions</a></ion-label>&nbsp;&nbsp;
+            <ion-checkbox formControlName="org_chk_terms"></ion-checkbox>
+          </ion-item>
+          <div class="error-container" *ngIf="errors">
+            <ng-container *ngFor="let error of errors">
+              <div class="error-message" >
+                <ion-icon name="information-circle-outline"></ion-icon>
+                <span>{{ error }}</span>
+              </div>
+            </ng-container>
+          </div>
+        </ion-list>
+        <!-- <ion-checkbox
+          color="primary"
+          formControlName="org_chk_terms"
+        ></ion-checkbox
+        >&nbsp;&nbsp;
+        <ion-label style="text-decoration: underline" (click)="showTermsModal()"
+          >Accept Terms</ion-label
+        > -->
+        <br /><br />
+        <ion-button
+          class="signup-btn"
+          type="submit"
+          expand="block"
+          >Sign Up</ion-button
+        >
+        <ion-row class="other-auth-options-row">
+          <ion-button
+            class="login-btn"
+            fill="clear"
+            [routerLink]="['/auth/login']"
+          >
+            Already have an account?
+          </ion-button>
+        </ion-row>
+      </form>
+    </div>
+
+    <!-- <div class="social-auth-options">
     <p class="options-divider">Or</p>
     <ion-button class="social-auth-btn facebook-auth-btn" expand="block" color="facebook" (click)="doFacebookSignup()">Sign Up with Facebook</ion-button>
     <ion-button class="social-auth-btn google-auth-btn" expand="block" color="google" (click)="doGoogleSignup()">Sign Up with Google</ion-button>
     <ion-button class="social-auth-btn twitter-auth-btn" expand="block" color="twitter" (click)="doTwitterSignup()">Sign Up with Twitter</ion-button>
     <ion-button class="social-auth-btn apple-auth-btn" expand="block" color="dark" (click)="doAppleSignup()">Sign Up with Apple</ion-button>
-  </div>
+  </div> -->
 
-  <div class="legal-stuff">
-    By creating an account you agree to our <a class="legal-action" (click)="showPrivacyModal()">Privacy Policy</a> and <a class="legal-action" (click)="showTermsModal()">Terms of use</a>.
-  </div>
+    <!-- <div class="legal-stuff">
+      By creating an account you agree to our
+      <a class="legal-action" (click)="showPrivacyModal()">Privacy Policy</a>
+      and <a class="legal-action" (click)="showTermsModal()">Terms of use</a>.
+    </div> -->
+  </ion-item-group>
 </ion-content>
