@@ -14,6 +14,10 @@ const routes: Routes = [
         redirectTo: 'categories',
         pathMatch: 'full'
       },
+	  {
+        path: 'home',
+        loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
+      },
       {
         path: 'categories',
         children: [
