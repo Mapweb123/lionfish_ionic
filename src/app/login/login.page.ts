@@ -43,6 +43,13 @@ export class LoginPage {
     public util: UtilService,
     private translateService: TranslateService
   ) {
+    if (
+      localStorage.getItem("user_user_id") != "" ||
+      localStorage.getItem("user_user_id") != null
+    ) {
+      //console.log('Inner App Component Login User ID:'+localStorage.getItem('user_user_id'));
+      this.router.navigate(["/home"]);
+    }
     //this.language = this.translateService.currentLang;
     this.loginForm = new FormGroup({
       email: new FormControl(
@@ -116,6 +123,7 @@ export class LoginPage {
 
           this.util.hideLoader();
           //this.router.navigate(['/tabs']);
+          this.router.navigate(["/home"]);
         }
       },
       (err) => {
