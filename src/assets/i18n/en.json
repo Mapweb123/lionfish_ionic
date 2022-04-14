@@ -10,5 +10,6 @@
   "SEE_ALL": "See all",
   "OK": "OK",
   "CANCEL": "Cancel",
-  "SELECT_LANGUAGE": "Select your language"
+  "SELECT_LANGUAGE": "Select your language",
+  "FORGOT_PASSWORD_TEXT": "Please enter your email address and we'll send you an email to reset your password"
 }

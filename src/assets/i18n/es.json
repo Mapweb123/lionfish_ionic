@@ -21,5 +21,13 @@
   "SEE_ALL": "Ver mas",
   "OK": "OK",
   "CANCEL": "Cancelar",
-  "SELECT_LANGUAGE": "Selecciona tu idioma"
+  "SELECT_LANGUAGE": "Selecciona tu idioma",
+  "T & C": "Términos y condiciones",
+  "Privacy Policy": "Política de privacidad",
+  "Recover your password": "Recupera tu contraseña",
+  "FORGOT_PASSWORD_TEXT": "Ingrese su dirección de correo electrónico y le enviaremos un correo electrónico para restablecer su contraseña",
+  "Reset Password": "Restablecer la contraseña",
+  "Back to Login": "Atrás para iniciar sesión",
+  "OR": "O",
+  "Create an Account": "Crea una cuenta"
 }
