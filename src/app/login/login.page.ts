@@ -48,7 +48,7 @@ export class LoginPage {
       localStorage.getItem("user_user_id") != null
     ) {
       //console.log('Inner App Component Login User ID:'+localStorage.getItem('user_user_id'));
-      this.router.navigate(["/home"]);
+      this.router.navigate(["/app/home"]);
     }
     //this.language = this.translateService.currentLang;
     this.loginForm = new FormGroup({
@@ -123,7 +123,7 @@ export class LoginPage {
 
           this.util.hideLoader();
           //this.router.navigate(['/tabs']);
-          this.router.navigate(["/home"]);
+          this.router.navigate(["/app/home"]);
         }
       },
       (err) => {
